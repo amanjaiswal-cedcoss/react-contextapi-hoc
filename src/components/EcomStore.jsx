@@ -8,8 +8,14 @@ import Login from "./Login";
 
 export const EcomContext = createContext();
 
+
 function EcomStore() {
-  const [state, setState] = useState({ products: [],cart:[],user:undefined,search:'' });
+  const [state, setState] =useState({
+    products: [],
+    cart: [],
+    user: undefined,
+    search: "",
+  });
 
   useEffect(() => {
     fetch("https://dummyjson.com/products")
@@ -19,12 +25,10 @@ function EcomStore() {
       });
   }, []);
 
-  const HomeWithLoader=LoaderHoc(Home)
-
   const routes = [
     {
       path: "/",
-      element: <HomeWithLoader />,
+      element: <Home />,
     },
     {
       path: "/login",
@@ -45,7 +49,7 @@ function EcomStore() {
   return (
     <>
       <EcomContext.Provider value={{ state, setState }}>
-        <RouterProvider router={router}/>
+        <RouterProvider router={router} />
       </EcomContext.Provider>
     </>
   );

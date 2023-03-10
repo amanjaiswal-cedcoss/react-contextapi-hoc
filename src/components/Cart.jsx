@@ -1,30 +1,27 @@
-import React, { useContext, useMemo } from 'react'
-import { EcomContext } from './EcomStore';
-import NavBar from './NavBar';
-import emptyCart from '../assets/emptycart.png'
+import React, { useContext, useMemo } from "react";
+import { EcomContext } from "./EcomStore";
+import NavBar from "./NavBar";
+import emptyCart from "../assets/emptycart.png";
 
 function Cart() {
-  const {state,setState}=useContext(EcomContext)
+  const { state, setState } = useContext(EcomContext);
 
-   // useMemo hook used to calculate sum of all the products in cart
-   const subtotal = useMemo(
+  // useMemo hook used to calculate sum of all the products in cart
+  const subtotal = useMemo(
     () =>
-      state.cart.reduce(
-        (total, ele) => total + ele.quantity * ele.price,
-        0
-      ),
+      state.cart.reduce((total, ele) => total + ele.quantity * ele.price, 0),
     [state.cart]
   );
 
   // fn to remove product from cart
-  const removeProduct=(index)=>{
-    state.cart.splice(index,1)
-    setState({...state})
-  }
+  const removeProduct = (index) => {
+    state.cart.splice(index, 1);
+    setState({ ...state });
+  };
 
   return (
     <>
-    <NavBar/>
+      <NavBar />
       <section className="cart d-flex flex-wrap justify-content-center bg-white my-2 shadow-sm pb-2">
         {state.cart.length > 0 ? (
           <>
@@ -45,7 +42,7 @@ function Cart() {
                       <span className="shorttxt">{ele.brand}</span>
                       <span className="d-flex align-items-center">
                         <span className="shorttxt">Quantity:</span>
-                          <span className='px-2'>{ele.quantity}</span>
+                        <span className="px-2">{ele.quantity}</span>
                       </span>
                       <div className="d-flex gap-1 align-items-center">
                         <span className="fw-bold">₹{ele.price}</span>
@@ -63,7 +60,7 @@ function Cart() {
                       <button
                         className="btn btn-sm px-0 text-danger"
                         onClick={() => {
-                          removeProduct(index)
+                          removeProduct(index);
                         }}
                       >
                         Remove
@@ -102,7 +99,7 @@ function Cart() {
         )}
       </section>
     </>
-  )
+  );
 }
 
-export default Cart
+export default Cart;

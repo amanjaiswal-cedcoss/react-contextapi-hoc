@@ -4,7 +4,7 @@ import { EcomContext } from "./EcomStore";
 import NavBar from "./NavBar";
 
 function Login() {
-  const {state,setState}=useContext(EcomContext)
+  const { state, setState } = useContext(EcomContext);
   const navigate = useNavigate();
 
   const refSignInps = useRef({
@@ -19,10 +19,11 @@ function Login() {
     if (email === "user@gmail.com" && password === "12345") {
       alert("Sign in successfully");
       navigate("/");
-      let user={
-        email,password
-      }
-      setState({...state,user})
+      let user = {
+        email,
+        password,
+      };
+      setState({ ...state, user });
     } else {
       alert("Enter right credentials");
     }

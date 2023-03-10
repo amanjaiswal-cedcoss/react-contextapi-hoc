@@ -4,7 +4,6 @@ export const SearchHoc = (searchfn) => {
   const withDebounce = () => {
     const search = (e) => {
       setTimeout(() => {
-
         searchfn(e);
       }, 1000);
     };
